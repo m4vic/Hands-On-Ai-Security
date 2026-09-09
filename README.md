@@ -34,8 +34,8 @@ who wants real backend and model internals instead of vendor talk.
 
 | Part | Covers | Status |
 |---|---|---|
-| **I — Foundation** | Vocabulary, the deterministic-vs-probabilistic reframe, the OWASP web + LLM maps, the 7-class threat taxonomy, real dated incidents, the HTTP/API/SQL machinery underneath it all | ✅ written — [PDF](Hands-On-AI-Security-Part-I-Foundation.pdf) |
-| **II — Direct Prompt Injection** | Build your first real attacker: direct injection, jailbreaking, role hijack, obfuscation, system-prompt extraction, a fuzzer, and the judge problem | 🚧 in progress |
+| **I — Foundation** | Vocabulary, the deterministic-vs-probabilistic reframe, the OWASP web + LLM maps, the 7-class threat taxonomy, real dated incidents, the HTTP/API/SQL machinery underneath it all |  written — [PDF](upcoming) |
+| **II — Direct Prompt Injection** | Build your first real attacker: direct injection, jailbreaking, role hijack, obfuscation, system-prompt extraction, a fuzzer, and the judge problem | in progress |
 | **III — Indirect Prompt Injection** | The attack that doesn't come from the user at all — it rides in through data the model reads | planned |
 | **IV — Creating Attacks** | Attack tooling, corpora, and the honest reality of building a labeled dataset at scale | planned |
 | **V — Creating Defense** | From pattern matching to a trained classifier, an honest survey of real guard products, and the regression problem | planned |
