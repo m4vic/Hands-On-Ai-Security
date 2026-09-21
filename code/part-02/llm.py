@@ -8,12 +8,12 @@ import requests
 MODEL = "mannix/llama3.1-8b-abliterated:q5_K_M"
 
 
-def ask(system_prompt, user_message):
+def ask(system_prompt, user_message, model=MODEL):
     """Send one system prompt and one user message. Return the reply text."""
     response = requests.post(
         "http://localhost:11434/api/chat",
         json={
-            "model": MODEL,
+            "model": model,
             "messages": [
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_message},
@@ -22,7 +22,7 @@ def ask(system_prompt, user_message):
             # temperature 0 asks for the most predictable reply it can give
             "options": {"temperature": 0},
         },
-        timeout=300,
+        timeout=900,
     )
     return response.json()["message"]["content"]
 
