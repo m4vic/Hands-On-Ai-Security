@@ -1,5 +1,13 @@
 # Generated output - readers produce their own by running the code.
-code/**/*.json
+code/**/results.json
+code/**/benign_results.json
+code/**/fuzz_results.json
+code/**/crescendo*.json
+code/**/labels_qwen*.json
+
+# Hand-authored reference data is NOT generated - keep it.
+!code/part-02/labels_opus5_manual.json
+
 __pycache__/
 *.pyc
 
