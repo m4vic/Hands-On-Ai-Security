@@ -1,0 +1,50 @@
+# Figure 3.2 - Input seam, probabilistic middle, output seam.
+# The classic map patrols both seams. The LLM map is the only one
+# that covers the strange middle.
+
+direction: right
+
+in_seam: "INPUT SEAM\n(deterministic world)" {
+  style.fill: "#f7f3ed"
+  style.stroke: "#b08968"
+
+  sources: "user prompt\ndocument\ntool result\nemail / webpage"
+  risk_in: "LLM01 prompt injection\n+ classic A01 / A03" {
+    style.fill: "#f4d7d7"
+    style.stroke: "#c14545"
+  }
+}
+
+middle: "PROBABILISTIC MIDDLE\nthe model's own judgment and agency" {
+  style.fill: "#e8eef7"
+  style.stroke: "#41618f"
+
+  decides: "LLM decides,\ncalls tools, acts" {
+    shape: hexagon
+    style.bold: true
+  }
+  risk_mid: "LLM02 - LLM09\nexcessive agency, disclosure,\npoisoning, embedding attacks" {
+    style.fill: "#f4d7d7"
+    style.stroke: "#c14545"
+  }
+}
+
+out_seam: "OUTPUT SEAM\n(deterministic world)" {
+  style.fill: "#f7f3ed"
+  style.stroke: "#b08968"
+
+  dests: "rendered to a user\npassed to another tool\nexecuted / stored"
+  risk_out: "LLM10 improper output handling\n+ classic injection downstream" {
+    style.fill: "#f4d7d7"
+    style.stroke: "#c14545"
+  }
+}
+
+in_seam.sources -> middle.decides
+middle.decides -> out_seam.dests
+
+note: "the CLASSIC map patrols both seams.\nthe LLM map is the ONLY one covering the middle,\nwhere the code runs perfectly and the JUDGEMENT was attacked." {
+  style.fill: "#fdf6e3"
+  style.stroke: "#b08968"
+  style.stroke-dash: 3
+}

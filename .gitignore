@@ -1,0 +1,9 @@
+# Generated output - readers produce their own by running the code.
+code/**/*.json
+__pycache__/
+*.pyc
+
+# Local environment
+.venv/
+venv/
+.env

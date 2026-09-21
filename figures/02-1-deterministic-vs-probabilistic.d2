@@ -1,0 +1,61 @@
+# Figure 2.1 - The one reframe everything else depends on.
+# A rule has an edge that does not move. A model weighs meaning,
+# and meaning has no edge a blocklist can hold onto.
+
+grid-columns: 2
+grid-gap: 60
+
+det: "DETERMINISTIC WORLD\nfirewall · signature · the SQL fix" {
+  grid-rows: 4
+  style.fill: "#f7f3ed"
+  style.stroke: "#3f7d47"
+
+  a: "EXACT RULE\nIP in range?\nsignature valid?" {
+    style.fill: "#d7ecd9"
+    style.stroke: "#3f7d47"
+    style.bold: true
+  }
+  b: "the boundary\ndoes NOT move" {
+    style.fill: transparent
+    style.stroke-dash: 3
+  }
+  c: "\"ignore all previous\ninstructions\"\n-> BLOCK" {
+    style.fill: "#d7ecd9"
+    style.stroke: "#3f7d47"
+  }
+  d: "\"disregard everything\nabove\"\n-> ALLOW (!)" {
+    style.fill: "#f4d7d7"
+    style.stroke: "#c14545"
+  }
+}
+
+prob: "PROBABILISTIC WORLD\na language model" {
+  grid-rows: 4
+  style.fill: "#f7f3ed"
+  style.stroke: "#41618f"
+
+  a: "WEIGHS MEANING\nno exact edges" {
+    style.fill: "#e8eef7"
+    style.stroke: "#41618f"
+    style.bold: true
+  }
+  b: "the boundary MOVES\nwith the wording" {
+    style.fill: transparent
+    style.stroke-dash: 3
+  }
+  c: "\"ignore...\"\n-> refused" {
+    style.fill: "#e8eef7"
+    style.stroke: "#41618f"
+  }
+  d: "\"disregard...\"\n-> maybe refused,\nmaybe not" {
+    style.fill: "#f4d7d7"
+    style.stroke: "#c14545"
+  }
+}
+
+note: "a firewall NEVER \"generally\" blocks a port.\na model only \"usually\" refuses." {
+  style.fill: "#fdf6e3"
+  style.stroke: "#b08968"
+  style.bold: true
+  style.font-size: 26
+}

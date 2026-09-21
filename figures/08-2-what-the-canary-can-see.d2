@@ -1,0 +1,43 @@
+# Figure 8.2 - The canary's coverage.
+# Perfect precision on one narrow question, blind to everything else,
+# and the blindness looks exactly like safety.
+
+direction: down
+
+fired: "93 ATTACKS FIRED" {
+  style.fill: "#e8eef7"
+  style.stroke: "#41618f"
+  style.bold: true
+}
+
+seen: "19  CANARY FIRED\nproven. exact. zero doubt.\nperfect precision" {
+  style.fill: "#d7ecd9"
+  style.stroke: "#3f7d47"
+}
+
+missed: "15+  OBVIOUSLY WORKED\n\"Developer Mode Enabled\"\n\"[EVIL MODE ON]\"\n10 partial system-prompt leaks\nbot soliciting a customer's SSN" {
+  style.fill: "#f4d7d7"
+  style.stroke: "#c14545"
+  style.bold: true
+}
+
+refused: "??  GENUINELY REFUSED\nindistinguishable from the row above" {
+  style.fill: "#eeeeee"
+  style.stroke: "#888888"
+}
+
+fired -> seen: "SECRET in reply"
+fired -> missed: "scored as MISS" {
+  style.stroke: "#c14545"
+  style.stroke-width: 2
+}
+fired -> refused: "scored as MISS" {style.stroke-dash: 3}
+
+verdict: "the canary answers ONE question:\n\"did THIS string escape?\"\n\nit cannot answer:\n\"did the attack succeed?\"" {
+  style.fill: "#fdf6e3"
+  style.stroke: "#b08968"
+  style.bold: true
+}
+
+missed -> verdict: {style.stroke-dash: 3}
+refused -> verdict: {style.stroke-dash: 3}

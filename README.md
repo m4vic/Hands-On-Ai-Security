@@ -56,12 +56,39 @@ Building from source needs a LaTeX toolchain + pandoc:
 
 ## Who this is for
 
-**Part I assumes nothing** — a motivated beginner can start there. **From
-Part II onward**, the book assumes comfort with Python and basic ML, and
+**Part One assumes nothing** — a motivated beginner can start there. **From
+Part Two onward**, the book assumes comfort with Python and basic ML, and
 gets genuinely technical. Full frontier-model fine-tuning is acknowledged as
 a compute reality most readers won't have; the achievable, teachable
 technique — BERT-scale fine-tuning on a free notebook — is the one you'll
 actually do.
+
+## Running the code
+
+Everything runs locally. No API keys, no cloud, no bill.
+
+You need [Ollama](https://ollama.com) with a model pulled. The book uses an
+*abliterated* (safety-stripped) model as the target on purpose — so that when
+an attack fails later, it failed because **your** shield stopped it, not
+because the model's own training caught it first:
+
+```bash
+ollama pull mannix/llama3.1-8b-abliterated:q5_K_M
+pip install -r requirements.txt
+```
+
+Then, from `code/part-02/`:
+
+```bash
+python target.py       # a support bot with a secret worth stealing
+python attacker.py     # fire all 93 attacks, check for the leaked canary
+python shield.py       # measure the defense (needs no model at all)
+python labeler.py      # ask a local model to classify attacks, score it
+```
+
+Any model works — edit `MODEL` in `llm.py`. The attack corpus lives in
+`attack_db/`, and `corpus.py` finds it relative to the repo, so a fresh
+clone runs as-is.
 
 ## Before you begin
 
@@ -72,7 +99,7 @@ to keep it is yours.
 
 ## License
 
-TBD — will be added before Part II ships.
+TBD — will be added before Part Two ships.
 
 ## Contact
 

@@ -1,0 +1,51 @@
+# Figure 1.2 - The anatomy of an agent.
+# The fork on the right is the whole book: reply = claim, tool call = deed.
+
+direction: right
+
+sys: "SYSTEM PROMPT\n\"never refund without verification\"\na suggestion, not a locked door" {
+  style.fill: "#fdf6e3"
+  style.stroke: "#b08968"
+  style.stroke-dash: 3
+}
+
+inputs: "INPUTS" {
+  style.fill: "#f7f3ed"
+  style.stroke: "#b08968"
+
+  user: "user message"
+  docs: "retrieved docs (RAG)\nfrom a vector DB"
+  tools_in: "tool results"
+}
+
+llm: "LLM DECIDES" {
+  shape: hexagon
+  style.fill: "#e8eef7"
+  style.stroke: "#41618f"
+  style.bold: true
+}
+
+reply: "REPLY\njust text\n— a CLAIM —\ncan be a lie" {
+  style.fill: "#f4e8d7"
+  style.stroke: "#b08968"
+}
+
+toolcall: "TOOL CALL\na real action\n— the TRUTH —\nsend_email(), issue_refund()" {
+  style.fill: "#f4d7d7"
+  style.stroke: "#c14545"
+  style.bold: true
+}
+
+sys -> llm: "shapes everything" {style.stroke-dash: 3}
+inputs.user -> llm
+inputs.docs -> llm
+inputs.tools_in -> llm
+
+llm -> reply
+llm -> toolcall
+
+mcp: "tools are offered\nover MCP" {
+  style.fill: transparent
+  style.stroke-dash: 3
+}
+mcp -> toolcall: {style.stroke-dash: 3}
