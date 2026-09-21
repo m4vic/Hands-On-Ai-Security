@@ -34,25 +34,19 @@ who wants real backend and model internals instead of vendor talk.
 
 | Part | Covers | Status |
 |---|---|---|
-| **I — Foundation** | Vocabulary, the deterministic-vs-probabilistic reframe, the OWASP web + LLM maps, the 7-class threat taxonomy, real dated incidents, the HTTP/API/SQL machinery underneath it all |  written — [PDF](upcoming) |
-| **II — Direct Prompt Injection** | Build your first real attacker: direct injection, jailbreaking, role hijack, obfuscation, system-prompt extraction, a fuzzer, and the judge problem | in progress |
-| **III — Indirect Prompt Injection** | The attack that doesn't come from the user at all — it rides in through data the model reads | planned |
-| **IV — Creating Attacks** | Attack tooling, corpora, and the honest reality of building a labeled dataset at scale | planned |
-| **V — Creating Defense** | From pattern matching to a trained classifier, an honest survey of real guard products, and the regression problem | planned |
+| **One — Foundation** | Vocabulary, the deterministic-vs-probabilistic reframe, the OWASP web + LLM maps, the 7-class threat taxonomy, real dated incidents, the HTTP/API/SQL machinery underneath it all | written |
+| **Two — Prompt Injection** | Direct *and* indirect injection, still text-only. Build a target, an attacker, a shield and a verifier; hit the judge problem; watch a model upgrade regress your posture | written |
+| **Three — Agentic Attacks** | The target grows real tools. Tool abuse, MCP, multi-agent handoffs, a real guardrail survey, and a harness that verifies from the tool-call trace rather than the text | planned |
+| **Four — AI-Driven Cybersecurity** | An original benchmark of vulnerable agent targets, taught from both sides: how to break it, how to fix it | planned |
 
-Parts I–V are the complete core arc. A tool-layer/lab-infrastructure
-extension (MCP, agent supply chain, hands-on practice environments) and a
-traditional-cybersecurity merge (classic web bugs meeting the agentic attack
-surface) are planned as a follow-on, not required to finish the core story.
+Each part is complete on its own - you finish it having gained something,
+not holding an IOU for a later part.
 
 ## Read it
 
-Part I is a finished PDF: **[Hands-On-AI-Security-Part-I-Foundation.pdf](Hands-On-AI-Security-Part-I-Foundation.pdf)**
-
-Building from source needs a LaTeX toolchain + pandoc:
-```bash
-./build-pdf.sh
-```
+Part One is written and builds to PDF. The book text itself is not in this
+repository - this repo carries the code, the attack corpus and the figures
+so you can run everything the book builds.
 
 ## Who this is for
 
@@ -84,6 +78,8 @@ python target.py       # a support bot with a secret worth stealing
 python attacker.py     # fire all 93 attacks, check for the leaked canary
 python shield.py       # measure the defense (needs no model at all)
 python labeler.py      # ask a local model to classify attacks, score it
+python judge.py        # ask a model "did the attack work?", score it too
+python regression.py   # freeze a posture, diff it after any change
 ```
 
 Any model works — edit `MODEL` in `llm.py`. The attack corpus lives in
@@ -99,7 +95,8 @@ to keep it is yours.
 
 ## License
 
-TBD — will be added before Part Two ships.
+TBD — not yet chosen. Treat the code here as read-only reference
+until a license is added.
 
 ## Contact
 
