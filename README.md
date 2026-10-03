@@ -8,10 +8,8 @@ reading about someone else's.
 [![License: TBD](https://img.shields.io/badge/license-TBD-lightgrey.svg)](#license)
 [![Status: in progress](https://img.shields.io/badge/status-in%20progress-orange.svg)](#status)
 
----
-
+--
 ## What this is
-
 Most security writing is a *hunter's* book: here's a bug class, here's where
 it hides, go find it in the wild. This isn't that. There's no scope question
 and no authorization question here — the target is always yours. You build
