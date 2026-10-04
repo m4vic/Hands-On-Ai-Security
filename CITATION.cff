@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+title: "Hands-On AI Security"
+message: >-
+  If you use this work — the book, the code, or the attack corpus — please
+  cite it using the metadata below.
+type: software
+authors:
+  - family-names: Jajoo
+    given-names: Sanskar
+repository-code: "https://github.com/m4vic/Hands-On-Ai-Security"
+abstract: >-
+  A builder's course in AI security. You build an attacker, a defender and a
+  target — three small systems that grow up together — and learn by breaking
+  and fixing your own machines rather than reading about someone else's.
+  Every claim in the work is backed by code that was actually written and
+  actually run: measured results, not assurances.
+keywords:
+  - ai-security
+  - prompt-injection
+  - llm-security
+  - agentic-ai
+  - red-teaming
+  - guardrails
+license: Apache-2.0
+preferred-citation:
+  type: book
+  title: "Hands-On AI Security"
+  authors:
+    - family-names: Jajoo
+      given-names: Sanskar
+  year: 2026
+  url: "https://github.com/m4vic/Hands-On-Ai-Security"

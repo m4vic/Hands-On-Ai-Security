@@ -1,0 +1,81 @@
+# Figure 3.1 - The classic and LLM Top 10s, side by side.
+#
+# Steps:
+#   index - both maps, plain
+#   1     - the SAME risk on both maps lights up (A03 = LLM04)
+#   2     - the cousins light up (A05 / LLM01 - syntax vs meaning)
+#
+# Rows are highlighted by restyling them in later steps rather than by
+# drawing long arrows across the gap: an arrow spanning two columns is
+# exactly where D2's routing gets ugly, and the colour reads better anyway.
+
+maps: "" {
+  grid-columns: 2
+  horizontal-gap: 70
+  style.stroke-width: 0
+  style.fill: transparent
+
+classic: "CLASSIC WEB — OWASP Top 10 (2025)\nthe deterministic world underneath" {
+  grid-columns: 1
+  grid-gap: 6
+  style.fill: "#f7f7f8"
+  style.stroke: "#888888"
+
+  a01: "A01  Broken Access Control" { style.fill: "#ffffff"; style.stroke: "#cccccc" }
+  a02: "A02  Security Misconfiguration" { style.fill: "#ffffff"; style.stroke: "#cccccc" }
+  a03: "A03  Software Supply Chain" { style.fill: "#ffffff"; style.stroke: "#cccccc" }
+  a04: "A04  Cryptographic Failures" { style.fill: "#ffffff"; style.stroke: "#cccccc" }
+  a05: "A05  Injection" { style.fill: "#ffffff"; style.stroke: "#cccccc" }
+  a06: "A06  Insecure Design" { style.fill: "#ffffff"; style.stroke: "#cccccc" }
+  a07: "A07  Authentication Failures" { style.fill: "#ffffff"; style.stroke: "#cccccc" }
+  a08: "A08  Integrity Failures" { style.fill: "#ffffff"; style.stroke: "#cccccc" }
+  a09: "A09  Logging & Alerting" { style.fill: "#ffffff"; style.stroke: "#cccccc" }
+  a10: "A10  Exceptional Conditions" { style.fill: "#ffffff"; style.stroke: "#cccccc" }
+}
+
+llm: "LLM APPS — OWASP Top 10 (2026)\nthe probabilistic layer on top" {
+  grid-columns: 1
+  grid-gap: 6
+  style.fill: "#f7f7f8"
+  style.stroke: "#888888"
+
+  l01: "LLM01  Prompt Injection          ◀ input seam" { style.fill: "#ffffff"; style.stroke: "#cccccc" }
+  l02: "LLM02  Sensitive Info Disclosure" { style.fill: "#ffffff"; style.stroke: "#cccccc" }
+  l03: "LLM03  Excessive Agency          ▲ biggest riser" { style.fill: "#ffffff"; style.stroke: "#cccccc" }
+  l04: "LLM04  Supply Chain" { style.fill: "#ffffff"; style.stroke: "#cccccc" }
+  l05: "LLM05  Data & Model Poisoning" { style.fill: "#ffffff"; style.stroke: "#cccccc" }
+  l06: "LLM06  Unbounded Consumption" { style.fill: "#ffffff"; style.stroke: "#cccccc" }
+  l07: "LLM07  Misinformation" { style.fill: "#ffffff"; style.stroke: "#cccccc" }
+  l08: "LLM08  Hidden Context Exposure" { style.fill: "#ffffff"; style.stroke: "#cccccc" }
+  l09: "LLM09  Vector & Embedding Weaknesses" { style.fill: "#ffffff"; style.stroke: "#cccccc" }
+  l10: "LLM10  Improper Output Handling   ◀ output seam" { style.fill: "#ffffff"; style.stroke: "#cccccc" }
+}
+}
+
+steps: {
+  1: {
+    maps.classic.a03: { style.fill: "#d7ecd9"; style.stroke: "#3f7d47"; style.stroke-width: 3; style.bold: true }
+    maps.llm.l04: { style.fill: "#d7ecd9"; style.stroke: "#3f7d47"; style.stroke-width: 3; style.bold: true }
+
+    same: "SAME RISK, BOTH MAPS\nsupply chain — A03 ≡ LLM04" {
+      style.fill: "#d7ecd9"
+      style.stroke: "#3f7d47"
+      style.stroke-width: 2
+      style.bold: true
+      style.font-size: 24
+    }
+  }
+
+  2: {
+    maps.classic.a05: { style.fill: "#fdf6e3"; style.stroke: "#b08968"; style.stroke-width: 3; style.bold: true }
+    maps.llm.l01: { style.fill: "#fdf6e3"; style.stroke: "#b08968"; style.stroke-width: 3; style.bold: true }
+
+    cousins: "COUSINS, NOT TWINS\nA05 subverts SYNTAX · LLM01 subverts MEANING" {
+      style.fill: "#fdf6e3"
+      style.stroke: "#b08968"
+      style.stroke-width: 2
+      style.bold: true
+      style.font-size: 24
+    }
+  }
+}

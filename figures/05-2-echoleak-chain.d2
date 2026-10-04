@@ -1,0 +1,76 @@
+# Figure 5.2 - EchoLeak's chain. CVE-2025-32711.
+#
+# The best-sourced incident in Part One, and a five-stage chain - which is
+# exactly the shape that benefits from building up on camera:
+#   index - one crafted email, never opened
+#   1     - the victim asks something unrelated
+#   2     - the planted instructions get read as context
+#   3     - four small bypasses, chained
+#   4     - internal files leave, silently
+
+direction: down
+
+email: "ONE crafted email\nsent, unopened, no click needed" {
+  style.fill: "#f4d7d7"
+  style.stroke: "#c14545"
+  style.stroke-width: 2
+  style.bold: true
+  tag: "indirect_injection" {
+    style.fill: "#ffffff"; style.stroke: "#c14545"; style.italic: true
+  }
+}
+
+steps: {
+  1: {
+    question: "victim asks Copilot\nan ordinary, unrelated question" {
+      style.fill: "#f7f7f8"
+      style.stroke: "#888888"
+      style.stroke-width: 2
+      style.bold: true
+    }
+    email -> question: { style.stroke: "#c14545"; style.stroke-width: 3 }
+  }
+
+  2: {
+    context: "planted instructions\nread as normal \"context\"" {
+      style.fill: "#fdf6e3"
+      style.stroke: "#b08968"
+      style.stroke-width: 2
+      style.bold: true
+    }
+    question -> context: { style.stroke: "#888888"; style.stroke-width: 3 }
+  }
+
+  3: {
+    chain: "FOUR BYPASSES CHAINED — each one individually small" {
+      grid-columns: 4
+      horizontal-gap: 12
+      style.fill: "#f4d7d7"
+      style.stroke: "#c14545"
+      style.stroke-width: 2
+      style.bold: true
+
+      b1: "1\nXPIA classifier\nevaded" { style.fill: "#ffffff"; style.stroke: "#c14545"; style.bold: true }
+      b2: "2\nlink redaction dodged\n(Markdown reference)" { style.fill: "#ffffff"; style.stroke: "#c14545"; style.bold: true }
+      b3: "3\nauto-fetched image\ntriggers the request" { style.fill: "#ffffff"; style.stroke: "#c14545"; style.bold: true }
+      b4: "4\nTeams proxy\nallowed by CSP" { style.fill: "#ffffff"; style.stroke: "#c14545"; style.bold: true }
+    }
+    context -> chain: { style.stroke: "#b08968"; style.stroke-width: 3 }
+  }
+
+  4: {
+    out: "INTERNAL FILES OUT, SILENTLY" {
+      shape: document
+      style.fill: "#2f2f35"
+      style.font-color: "#ffffff"
+      style.stroke: "#2f2f35"
+      style.stroke-width: 2
+      style.bold: true
+      style.font-size: 28
+      tag: "disclosure / LLM02 · zero user action" {
+        style.fill: "#ffffff"; style.font-color: "#2f2f35"; style.stroke: "#888888"; style.italic: true
+      }
+    }
+    chain -> out: { style.stroke: "#c14545"; style.stroke-width: 3 }
+  }
+}

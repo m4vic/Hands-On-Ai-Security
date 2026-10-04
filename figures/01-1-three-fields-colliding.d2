@@ -1,0 +1,77 @@
+# Figure 1.1 - Three fields, one sentence.
+#
+# Built as STEPS so it assembles on camera while narrating:
+#   index - the three fields arrive separately
+#   1     - they converge on AI security
+#   2     - the payoff: one real sentence, colour-coded by origin
+#
+# Render with ELK (see make-figures.sh). ELK preserves declaration order and
+# routes edges orthogonally; dagre reverses same-rank order and will route
+# straight through boxes here.
+
+direction: down
+
+ml: "MACHINE LEARNING" {
+  style.fill: "#e8eef7"
+  style.stroke: "#41618f"
+  style.stroke-width: 2
+  style.bold: true
+  t: "model · token\nembedding · LLM" { style.fill: "#ffffff"; style.stroke: "#41618f"; width: 430 }
+}
+
+swe: "SOFTWARE ENGINEERING" {
+  style.fill: "#fdf6e3"
+  style.stroke: "#b08968"
+  style.stroke-width: 2
+  style.bold: true
+  t: "API · session · HTTP\ndatabase · JSON" { style.fill: "#ffffff"; style.stroke: "#b08968"; width: 430 }
+}
+
+sec: "CYBERSECURITY" {
+  style.fill: "#f4d7d7"
+  style.stroke: "#c14545"
+  style.stroke-width: 2
+  style.bold: true
+  t: "attacker · defender\ninjection · exploit" { style.fill: "#ffffff"; style.stroke: "#c14545"; width: 430 }
+}
+
+steps: {
+  1: {
+    core: "AI SECURITY" {
+      shape: hexagon
+      style.fill: "#2f2f35"
+      style.font-color: "#ffffff"
+      style.stroke: "#2f2f35"
+      style.bold: true
+      style.font-size: 32
+    }
+
+    ml -> core: { style.stroke: "#41618f"; style.stroke-width: 3 }
+    swe -> core: { style.stroke: "#b08968"; style.stroke-width: 3 }
+    sec -> core: { style.stroke: "#c14545"; style.stroke-width: 3 }
+  }
+
+  2: {
+    sentence: "ONE SENTENCE, ALL THREE VOCABULARIES AT ONCE" {
+      grid-columns: 4
+      horizontal-gap: 10
+      style.fill: "#fafafa"
+      style.stroke: "#cccccc"
+
+      a: "the indirect injection" {
+        style.fill: "#f4d7d7"; style.stroke: "#c14545"; style.stroke-width: 2; style.bold: true
+      }
+      b: "bypassed the guardrail" {
+        style.fill: "#f4d7d7"; style.stroke: "#c14545"; style.stroke-width: 2; style.bold: true
+      }
+      c: "because the model's" {
+        style.fill: "#e8eef7"; style.stroke: "#41618f"; style.stroke-width: 2; style.bold: true
+      }
+      d: "API call wasn't authenticated" {
+        style.fill: "#fdf6e3"; style.stroke: "#b08968"; style.stroke-width: 2; style.bold: true
+      }
+    }
+
+    core -> sentence: "sounds like this" { style.stroke: "#2f2f35"; style.stroke-width: 2 }
+  }
+}

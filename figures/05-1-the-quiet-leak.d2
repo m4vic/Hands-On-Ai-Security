@@ -1,0 +1,68 @@
+# Figure 5.1 - The shape of a quiet leak.
+#
+# Steps, so the three-week silence lands last and alone:
+#   index - the innocent-looking question
+#   1     - the system prompt gives way
+#   2     - confidential data leaves
+#   3     - and nobody notices for three weeks
+
+direction: down
+
+question: "innocent-looking question\n(\"carefully worded\")" {
+  style.fill: "#f4d7d7"
+  style.stroke: "#c14545"
+  style.stroke-width: 2
+  style.bold: true
+  tag: "direct_injection / LLM01" {
+    style.fill: "#ffffff"; style.stroke: "#c14545"; style.italic: true
+  }
+}
+
+steps: {
+  1: {
+    overridden: "system prompt\noverridden" {
+      style.fill: "#fdf6e3"
+      style.stroke: "#b08968"
+      style.stroke-width: 2
+      style.bold: true
+      tag: "the \"usually\"\nCh.2 warned about" {
+        style.fill: "#ffffff"; style.stroke: "#b08968"; style.italic: true
+      }
+    }
+    question -> overridden: { style.stroke: "#c14545"; style.stroke-width: 3 }
+  }
+
+  2: {
+    out: "confidential pricing data\nout the door" {
+      style.fill: "#f4d7d7"
+      style.stroke: "#c14545"
+      style.stroke-width: 2
+      style.bold: true
+      tag: "disclosure / LLM02" {
+        style.fill: "#ffffff"; style.stroke: "#c14545"; style.italic: true
+      }
+    }
+    overridden -> out: { style.stroke: "#b08968"; style.stroke-width: 3 }
+  }
+
+  3: {
+    silence: "3 WEEKS, UNNOTICED" {
+      shape: document
+      style.fill: "#2f2f35"
+      style.font-color: "#ffffff"
+      style.stroke: "#2f2f35"
+      style.stroke-width: 2
+      style.bold: true
+      style.font-size: 30
+    }
+    note: "the attack was never invisible.\nnobody was watching the right signal.\n\nlogging failure / A09" {
+      style.fill: "#ffffff"
+      style.stroke: "#888888"
+      style.italic: true
+      width: 560
+    }
+
+    out -> silence: { style.stroke: "#c14545"; style.stroke-width: 3 }
+    silence -> note: { style.stroke: "#888888"; style.stroke-dash: 3 }
+  }
+}

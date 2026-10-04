@@ -1,0 +1,73 @@
+# Figure 6.1 - A request and a response, every part named.
+#
+# Steps:
+#   index - the request
+#   1     - the response
+#   2     - the punchline: every LLM prompt you will ever send is that one field
+
+direction: right
+
+request: "THE REQUEST   client ──▶ server" {
+  grid-columns: 1
+  grid-gap: 4
+  style.fill: "#e8eef7"
+  style.stroke: "#41618f"
+  style.stroke-width: 2
+  style.bold: true
+
+  line: "POST /api/generate  HTTP/1.1\n▲ method   ▲ path" {
+    style.fill: "#ffffff"; style.stroke: "#41618f"; style.bold: true; width: 560
+  }
+  headers: "Host: localhost:11434\nContent-Type: application/json\n◀ headers" {
+    style.fill: "#ffffff"; style.stroke: "#41618f"; width: 560
+  }
+  body: "{ \"model\": \"...\",\n  \"prompt\": \"Say hello\" }\n◀ body" {
+    style.fill: "#ffffff"; style.stroke: "#41618f"; style.bold: true; width: 560
+  }
+}
+
+steps: {
+  1: {
+    response: "THE RESPONSE   server ──▶ client" {
+      grid-columns: 1
+      grid-gap: 4
+      style.fill: "#d7ecd9"
+      style.stroke: "#3f7d47"
+      style.stroke-width: 2
+      style.bold: true
+
+      status: "HTTP/2  200\n◀ status" {
+        style.fill: "#ffffff"; style.stroke: "#3f7d47"; style.bold: true; width: 520
+      }
+      headers: "Content-Type: application/json\n◀ headers" {
+        style.fill: "#ffffff"; style.stroke: "#3f7d47"; width: 520
+      }
+      body: "{ \"response\": \"Hello\" }\n◀ body" {
+        style.fill: "#ffffff"; style.stroke: "#3f7d47"; style.bold: true; width: 520
+      }
+    }
+
+    request -> response: { style.stroke: "#41618f"; style.stroke-width: 3 }
+
+    codes: "status codes you'll live with\n\n200 ok          404 not found\n401 unauth    403 forbidden\n500 server broke" {
+      style.fill: "#f7f7f8"
+      style.stroke: "#888888"
+      width: 420
+    }
+    response -> codes: { style.stroke: "#888888"; style.stroke-dash: 3 }
+  }
+
+  2: {
+    request.body: { style.fill: "#fdf6e3"; style.stroke: "#b08968"; style.stroke-width: 4 }
+
+    punchline: "every LLM prompt you will ever send\nis just that \"prompt\" field" {
+      shape: document
+      style.fill: "#fdf6e3"
+      style.stroke: "#b08968"
+      style.stroke-width: 2
+      style.bold: true
+      style.font-size: 26
+    }
+    request.body -> punchline: { style.stroke: "#b08968"; style.stroke-width: 3 }
+  }
+}

@@ -1,0 +1,83 @@
+# Figure 4.1 - The seven classes, grouped by what they attack.
+#
+# Steps follow the order the chapter introduces them:
+#   index - benign, the control group
+#   1     - attacks on the model itself (the text channel)
+#   2     - the modifier that rides on any of them
+#   3     - attacks on what the model touches (action & data)
+#
+# The groups live inside a 1-column grid. Without it they are unconnected
+# siblings, and an unconnected sibling ignores `direction` - ELK lays them
+# out in one very wide row instead of stacking them.
+
+groups: "" {
+  grid-columns: 1
+  grid-gap: 26
+  style.stroke-width: 0
+  style.fill: transparent
+
+  control: "THE CONTROL GROUP" {
+    style.fill: "#d7ecd9"
+    style.stroke: "#3f7d47"
+    style.stroke-width: 2
+    style.bold: true
+
+    benign: "benign\nnormal use — not an attack.\nthe thing a defense must NOT flag." {
+      style.fill: "#ffffff"; style.stroke: "#3f7d47"; width: 900
+    }
+  }
+}
+
+steps: {
+  1: {
+    groups.model_attacks: "ATTACKS ON THE MODEL ITSELF — through the prompt, the text channel" {
+      grid-columns: 3
+      horizontal-gap: 14
+      style.fill: "#e8eef7"
+      style.stroke: "#41618f"
+      style.stroke-width: 2
+      style.bold: true
+
+      di: "direct_injection\noverride the model's\nINSTRUCTIONS" {
+        style.fill: "#ffffff"; style.stroke: "#41618f"; style.bold: true; width: 290
+      }
+      rh: "role_hijack\noverride the model's\nIDENTITY" {
+        style.fill: "#ffffff"; style.stroke: "#41618f"; style.bold: true; width: 290
+      }
+      se: "system_extraction\nsteal the model's\nINSTRUCTIONS" {
+        style.fill: "#ffffff"; style.stroke: "#41618f"; style.bold: true; width: 290
+      }
+    }
+  }
+
+  2: {
+    groups.modifier: "A MODIFIER ON ANY ATTACK — how it's delivered, not what it does" {
+      style.fill: "#fdf6e3"
+      style.stroke: "#b08968"
+      style.stroke-width: 2
+      style.bold: true
+
+      ob: "obfuscation\nhide the payload so a literal filter can't see it" {
+        style.fill: "#ffffff"; style.stroke: "#b08968"; style.bold: true; width: 900
+      }
+    }
+  }
+
+  3: {
+    groups.touch_attacks: "ATTACKS ON WHAT THE MODEL TOUCHES — the action & data channels" {
+      grid-columns: 2
+      horizontal-gap: 14
+      style.fill: "#f4d7d7"
+      style.stroke: "#c14545"
+      style.stroke-width: 2
+      style.bold: true
+
+      ta: "tool_abuse\nmake the model call\na tool it shouldn't" {
+        style.fill: "#ffffff"; style.stroke: "#c14545"; style.bold: true; width: 440
+      }
+      ii: "indirect_injection\ndeliver the attack through\nDATA, not the chat" {
+        style.fill: "#ffffff"; style.stroke: "#c14545"; style.bold: true; width: 440
+      }
+    }
+  }
+}

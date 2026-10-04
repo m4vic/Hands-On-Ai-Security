@@ -5,7 +5,8 @@ and a target — three small systems that grow up together across the book —
 and you learn AI security by breaking and fixing your own machines, not by
 reading about someone else's.
 
-[![License: TBD](https://img.shields.io/badge/license-TBD-lightgrey.svg)](#license)
+[![Code: Apache 2.0](https://img.shields.io/badge/code-Apache--2.0-blue.svg)](LICENSE)
+[![Book: CC BY-SA 4.0](https://img.shields.io/badge/book-CC%20BY--SA%204.0-lightgrey.svg)](LICENSE-BOOK)
 [![Status: in progress](https://img.shields.io/badge/status-in%20progress-orange.svg)](#status)
 
 --
@@ -93,8 +94,33 @@ to keep it is yours.
 
 ## License
 
-TBD — not yet chosen. Treat the code here as read-only reference
-until a license is added.
+This project is split deliberately.
+
+**Open — Part One (Foundation) and Part Two (Prompt Injection):**
+
+- Code and the attack corpus — [Apache-2.0](LICENSE)
+- Book text and figures — [CC BY-SA 4.0](LICENSE-BOOK)
+
+Use it, adapt it, translate it, build on it — commercially or not. Two
+conditions: credit **Sanskar Jajoo**, and if you distribute something built
+on the book material, keep it under the same license.
+
+**Reserved — Part Three (Agentic Attacks) and Part Four (AI-Driven
+Cybersecurity):** © Sanskar Jajoo, all rights reserved. These are the deeper
+agentic-AI and security materials, and no license is granted for them.
+
+Full detail, including what a license can and cannot require, is in
+[LICENSING.md](LICENSING.md).
+
+## Citation
+
+This repo includes a `CITATION.cff`, so GitHub's **"Cite this repository"**
+button produces a correct APA or BibTeX entry.
+
+```
+Jajoo, S. (2026). Hands-On AI Security.
+https://github.com/m4vic/Hands-On-Ai-Security
+```
 
 ## Contact
 

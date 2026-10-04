@@ -1,0 +1,75 @@
+# Figure 2.2 - The two channels a model produces.
+#
+# Steps, so the reveal lands in the right order on camera:
+#   index - attacker's input reaches the model
+#   1     - the TEXT channel: what it said (a claim)
+#   2     - the ACTION channel: what it did (the truth)
+#
+# Stills: d2 --scale 2 02-2-the-two-channels.d2 out.png
+
+direction: right
+
+input: "attacker's input" {
+  style.fill: "#f4d7d7"
+  style.stroke: "#c14545"
+  style.stroke-width: 2
+  style.bold: true
+}
+
+model: "MODEL" {
+  shape: hexagon
+  style.fill: "#2f2f35"
+  style.font-color: "#ffffff"
+  style.stroke: "#2f2f35"
+  style.bold: true
+  style.font-size: 26
+}
+
+input -> model
+
+steps: {
+  1: {
+    said: "TEXT CHANNEL — what it SAID" {
+      style.fill: "#eeeeee"
+      style.stroke: "#888888"
+      style.stroke-width: 2
+      style.bold: true
+      q: "\"I've looked into that for you.\"" {
+        style.fill: "#ffffff"; style.stroke: "#888888"; width: 520
+      }
+      tag: "a CLAIM — and a claim can be a lie" {
+        style.fill: "#ffffff"; style.stroke: "#bbbbbb"; style.italic: true; width: 520
+      }
+    }
+
+    model -> said: { style.stroke: "#888888"; style.stroke-width: 3 }
+  }
+
+  2: {
+    did: "ACTION CHANNEL — what it DID" {
+      style.fill: "#f4d7d7"
+      style.stroke: "#c14545"
+      style.stroke-width: 2
+      style.bold: true
+      q: "issue_refund(to=attacker)" {
+        style.fill: "#ffffff"; style.stroke: "#c14545"; width: 520
+      }
+      tag: "the TRUTH — the tool-call trace" {
+        style.fill: "#ffffff"; style.stroke: "#c14545"; style.italic: true; width: 520
+      }
+    }
+
+    model -> did: { style.stroke: "#c14545"; style.stroke-width: 3 }
+
+    punchline: "the reply can say \"all safe\"\nwhile the trace shows money left the building" {
+      shape: document
+      style.fill: "#fdf6e3"
+      style.stroke: "#b08968"
+      style.stroke-width: 2
+      style.bold: true
+      style.font-size: 22
+    }
+
+    did -> punchline: { style.stroke: "#b08968"; style.stroke-width: 2 }
+  }
+}
