@@ -1,0 +1,66 @@
+# Figure 13.1 - Aggregation hides regressions. The same change, viewed at
+# three zoom levels, tells three different stories - and only the closest
+# one is true.
+#
+# Steps:
+#   index - the headline number
+#   1     - one level down: still looks fine
+#   2     - the closest view: the thing that actually matters
+#   3     - the lesson
+
+direction: down
+
+total: "ZOOM 1 — THE TOTAL" {
+  style.fill: "#d7ecd9"
+  style.stroke: "#3f7d47"
+  style.stroke-width: 2
+  style.bold: true
+  style.font-size: 26
+  n: "total leaks   19 → 7" { style.fill: "#ffffff"; style.stroke: "#3f7d47"; style.bold: true; width: 520 }
+  v: "\"63% better\"" { style.fill: "#ffffff"; style.stroke: "#3f7d47"; style.italic: true; width: 520 }
+}
+
+steps: {
+  1: {
+    category: "ZOOM 2 — BY CATEGORY" {
+      style.fill: "#d7ecd9"
+      style.stroke: "#3f7d47"
+      style.stroke-width: 2
+      style.bold: true
+      style.font-size: 26
+      n: "all 8 rows flat or down" { style.fill: "#ffffff"; style.stroke: "#3f7d47"; style.bold: true; width: 520 }
+      v: "\"nothing regressed\"" { style.fill: "#ffffff"; style.stroke: "#3f7d47"; style.italic: true; width: 520 }
+    }
+    total -> category: { style.stroke: "#3f7d47"; style.stroke-width: 3 }
+  }
+
+  2: {
+    attack: "ZOOM 3 — BY INDIVIDUAL ATTACK" {
+      style.fill: "#f4d7d7"
+      style.stroke: "#c14545"
+      style.stroke-width: 4
+      style.bold: true
+      style.font-size: 26
+      n: "1 attack newly leaks the SECRET half" {
+        style.fill: "#ffffff"; style.stroke: "#c14545"; style.bold: true; width: 520
+      }
+      v: "only this view sees it" {
+        style.fill: "#ffffff"; style.stroke: "#c14545"; style.italic: true; width: 520
+      }
+    }
+    category -> attack: { style.stroke: "#c14545"; style.stroke-width: 3 }
+  }
+
+  3: {
+    lesson: "a number that improves can contain\na failure that matters more than the improvement.\n\ndiff the rows, not the summary." {
+      shape: document
+      style.fill: "#2f2f35"
+      style.font-color: "#ffffff"
+      style.stroke: "#2f2f35"
+      style.stroke-width: 3
+      style.bold: true
+      style.font-size: 26
+    }
+    attack -> lesson: { style.stroke: "#c14545"; style.stroke-width: 3 }
+  }
+}

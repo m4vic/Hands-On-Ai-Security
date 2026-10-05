@@ -1,0 +1,73 @@
+# Figure 11.1 - Chapter 9's shield curve in a different costume. Precision
+# somewhere is paid for with precision somewhere else.
+#
+# Steps:
+#   index - the two prompts
+#   1     - what each one actually scored, measured
+#   2     - the lesson
+
+direction: down
+
+prompts: "" {
+  grid-columns: 1
+  horizontal-gap: 50
+  style.stroke-width: 0
+  style.fill: transparent
+
+  orig: "ORIGINAL PROMPT" {
+    style.fill: "#e8eef7"
+    style.stroke: "#41618f"
+    style.stroke-width: 2
+    style.bold: true
+    style.font-size: 26
+  }
+
+  rule: "DECISION-RULE PROMPT" {
+    style.fill: "#fdf6e3"
+    style.stroke: "#b08968"
+    style.stroke-width: 2
+    style.bold: true
+    style.font-size: 26
+  }
+}
+
+prompts.orig -> prompts.rule: "the same one lever" {
+  style.stroke: "#2f2f35"
+  style.stroke-width: 4
+}
+
+steps: {
+  1: {
+    prompts.orig.a: "indirect   2/9" {
+      style.fill: "#f4d7d7"; style.stroke: "#c14545"; style.bold: true; width: 300
+    }
+    prompts.orig.b: "direct    11/20" {
+      style.fill: "#d7ecd9"; style.stroke: "#3f7d47"; style.bold: true; width: 300
+    }
+    prompts.orig.c: "59% overall" {
+      style.fill: "#ffffff"; style.stroke: "#41618f"; style.bold: true; width: 300
+    }
+
+    prompts.rule.a: "indirect   8/9" {
+      style.fill: "#d7ecd9"; style.stroke: "#3f7d47"; style.bold: true; width: 300
+    }
+    prompts.rule.b: "direct     1/20" {
+      style.fill: "#f4d7d7"; style.stroke: "#c14545"; style.bold: true; width: 300
+    }
+    prompts.rule.c: "42% overall" {
+      style.fill: "#ffffff"; style.stroke: "#b08968"; style.bold: true; width: 300
+    }
+  }
+
+  2: {
+    lesson: "you do not tune a prompt toward \"correct\".\nyou choose which category eats the error." {
+      shape: document
+      style.fill: "#2f2f35"
+      style.font-color: "#ffffff"
+      style.stroke: "#2f2f35"
+      style.stroke-width: 2
+      style.bold: true
+      style.font-size: 28
+    }
+  }
+}

@@ -1,0 +1,76 @@
+# Figure 9.1 - The shield and the verifier sit on opposite sides of the model
+# and fail in opposite directions.
+#
+# Steps:
+#   index - the two roles, named
+#   1     - where each one sits relative to the model
+#   2     - the three contrasts that matter
+
+direction: right
+
+pair: "" {
+  grid-columns: 2
+  horizontal-gap: 100
+  style.stroke-width: 0
+  style.fill: transparent
+
+  shield: "THE SHIELD\nguards the way IN" {
+    grid-columns: 1
+    grid-gap: 8
+    style.fill: "#e8eef7"
+    style.stroke: "#41618f"
+    style.stroke-width: 2
+
+    a: "user message"          { style.fill: "#ffffff"; style.stroke: "#41618f"; width: 380 }
+    b: "block?  — yes → refuse" { style.fill: "#ffffff"; style.stroke: "#41618f"; style.bold: true; width: 380 }
+    c: "no → the model answers" { style.fill: "#ffffff"; style.stroke: "#41618f"; width: 380 }
+  }
+
+  verifier: "THE VERIFIER\njudges what came OUT" {
+    grid-columns: 1
+    grid-gap: 8
+    style.fill: "#d7ecd9"
+    style.stroke: "#3f7d47"
+    style.stroke-width: 2
+
+    a: "model reply"             { style.fill: "#ffffff"; style.stroke: "#3f7d47"; width: 380 }
+    b: "did the attack work?"    { style.fill: "#ffffff"; style.stroke: "#3f7d47"; style.bold: true; width: 380 }
+    c: "a row in results.json"   { style.fill: "#ffffff"; style.stroke: "#3f7d47"; width: 380 }
+  }
+}
+
+steps: {
+  1: {
+    timing: "" {
+      grid-columns: 2
+      horizontal-gap: 100
+      style.stroke-width: 0
+      style.fill: transparent
+
+      s: "runs BEFORE the model answers" {
+        style.fill: "#e8eef7"; style.stroke: "#41618f"; style.bold: true; width: 440
+      }
+      v: "runs AFTER the model answers" {
+        style.fill: "#d7ecd9"; style.stroke: "#3f7d47"; style.bold: true; width: 440
+      }
+    }
+  }
+
+  2: {
+    consequence: "" {
+      grid-columns: 2
+      horizontal-gap: 100
+      style.stroke-width: 0
+      style.fill: transparent
+
+      s: "its mistakes hurt REAL USERS\n\nit is a defense" {
+        style.fill: "#f4d7d7"; style.stroke: "#c14545"; style.stroke-width: 2
+        style.bold: true; style.font-size: 22; width: 440
+      }
+      v: "its mistakes hurt YOUR OWN DATA\n\nit is a measurement instrument" {
+        style.fill: "#fdf6e3"; style.stroke: "#b08968"; style.stroke-width: 2
+        style.bold: true; style.font-size: 22; width: 440
+      }
+    }
+  }
+}

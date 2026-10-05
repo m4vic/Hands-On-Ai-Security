@@ -1,0 +1,69 @@
+# Figure 8.1 - The whole attacker in one picture: load, send, verify, record.
+#
+# Steps:
+#   index - the three pieces
+#   1     - load and send
+#   2     - the reply comes back, and the one question asked of it
+#   3     - the record
+
+direction: down
+
+corpus: "attack_db/" {
+  style.fill: "#e8eef7"
+  style.stroke: "#41618f"
+  style.stroke-width: 2
+  style.bold: true
+  t: "8 folders\n93 attacks" { style.fill: "#ffffff"; style.stroke: "#41618f"; width: 240 }
+}
+
+attacker: "attacker.py" {
+  style.fill: "#fdf6e3"
+  style.stroke: "#b08968"
+  style.stroke-width: 2
+  style.bold: true
+  t: "for each attack:\n  send\n  verify\n  record" { style.fill: "#ffffff"; style.stroke: "#b08968"; width: 260 }
+}
+
+target: "target.py" {
+  style.fill: "#f4d7d7"
+  style.stroke: "#c14545"
+  style.stroke-width: 2
+  style.bold: true
+  t: "Aria\n+ system prompt\n+ canary" { style.fill: "#ffffff"; style.stroke: "#c14545"; width: 260 }
+}
+
+steps: {
+  1: {
+    corpus -> attacker: "load" { style.stroke: "#41618f"; style.stroke-width: 3 }
+    attacker -> target: "message" { style.stroke: "#b08968"; style.stroke-width: 3 }
+  }
+
+  2: {
+    target -> attacker: "reply" { style.stroke: "#c14545"; style.stroke-width: 3; style.stroke-dash: 3 }
+
+    question: "is the SECRET in the reply?" {
+      shape: diamond
+      style.fill: "#2f2f35"
+      style.font-color: "#ffffff"
+      style.stroke: "#2f2f35"
+      style.bold: true
+      style.font-size: 24
+    }
+    attacker -> question: { style.stroke: "#2f2f35"; style.stroke-width: 3 }
+  }
+
+  3: {
+    results: "results.json" {
+      shape: document
+      style.fill: "#d7ecd9"
+      style.stroke: "#3f7d47"
+      style.stroke-width: 2
+      style.bold: true
+      style.font-size: 24
+      t: "one row per attack.\nno opinions, just what happened." {
+        style.fill: "#ffffff"; style.stroke: "#3f7d47"; style.italic: true; width: 420
+      }
+    }
+    question -> results: { style.stroke: "#3f7d47"; style.stroke-width: 3 }
+  }
+}

@@ -1,0 +1,89 @@
+# Figure 9.2 - Three verifiers over the same 93-attack corpus. Each trades
+# certainty against coverage, and none of them is simply "the good one".
+#
+# Steps, one verifier per board, so each trade-off lands before the next
+# arrives:
+#   index - the corpus they all read
+#   1     - the canary:   certain, and nearly blind
+#   2     - phrase bank v1: sees a lot, and cries wolf
+#   3     - phrase bank v2: honest, and shrugs at two-thirds
+#   4     - the shape of the trade
+
+direction: down
+
+rows: "" {
+  grid-columns: 1
+  grid-gap: 22
+  style.stroke-width: 0
+  style.fill: transparent
+
+corpus: "ONE CORPUS — 93 attacks, the same evidence for all three" {
+  style.fill: "#2f2f35"
+  style.font-color: "#ffffff"
+  style.stroke: "#2f2f35"
+  style.stroke-width: 2
+  style.bold: true
+  style.font-size: 26
+}
+}
+
+steps: {
+  1: {
+    rows.canary: "THE CANARY" {
+      style.fill: "#d7ecd9"
+      style.stroke: "#3f7d47"
+      style.stroke-width: 2
+      style.bold: true
+      n: "19 hit  ·  74 recorded clean\n(most of those 74 were not)" {
+        style.fill: "#ffffff"; style.stroke: "#3f7d47"; style.bold: true; width: 560
+      }
+      t: "never wrong · almost always blind" {
+        style.fill: "#ffffff"; style.stroke: "#3f7d47"; style.italic: true; width: 560
+      }
+    }
+    rows.corpus -> rows.canary: { style.stroke: "#3f7d47"; style.stroke-width: 3 }
+  }
+
+  2: {
+    rows.v1: "PHRASE BANK v1" {
+      style.fill: "#fdf6e3"
+      style.stroke: "#b08968"
+      style.stroke-width: 2
+      style.bold: true
+      n: "69 hit  ·  21 unsure  ·  3 miss" {
+        style.fill: "#ffffff"; style.stroke: "#b08968"; style.bold: true; width: 560
+      }
+      t: "sees a lot · flags honest replies as attacks" {
+        style.fill: "#ffffff"; style.stroke: "#b08968"; style.italic: true; width: 560
+      }
+    }
+    rows.corpus -> rows.v1: { style.stroke: "#b08968"; style.stroke-width: 3 }
+  }
+
+  3: {
+    rows.v2: "PHRASE BANK v2" {
+      style.fill: "#e8eef7"
+      style.stroke: "#41618f"
+      style.stroke-width: 2
+      style.bold: true
+      n: "26 hit  ·  61 unsure  ·  6 miss" {
+        style.fill: "#ffffff"; style.stroke: "#41618f"; style.bold: true; width: 560
+      }
+      t: "never caught lying · shrugs at two-thirds" {
+        style.fill: "#ffffff"; style.stroke: "#41618f"; style.italic: true; width: 560
+      }
+    }
+    rows.corpus -> rows.v2: { style.stroke: "#41618f"; style.stroke-width: 3 }
+  }
+
+  4: {
+    rows.trade: "certainty and coverage are the same dial.\nnone of these is the good one —\nthey are three places to stand." {
+      shape: document
+      style.fill: "#f4d7d7"
+      style.stroke: "#c14545"
+      style.stroke-width: 3
+      style.bold: true
+      style.font-size: 26
+    }
+  }
+}

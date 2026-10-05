@@ -1,0 +1,80 @@
+# Figure 12.1 - Four judges over the same evidence. Two of them are
+# indistinguishable from answering "refused" every time.
+#
+# The baseline is revealed FIRST, on purpose: without it, 63% looks like a
+# passing grade instead of what it is.
+#
+# Bar lengths are proportional widths (47% -> 470px and so on), so the
+# comparison is visual rather than a column of numbers.
+#
+# Steps:
+#   index - the do-nothing baseline
+#   1     - the two judges that bought essentially nothing
+#   2     - the two that actually worked
+#   3     - the lesson
+
+direction: down
+
+baseline: "THE DO-NOTHING BASELINE — 61%" {
+  style.fill: "#2f2f35"
+  style.font-color: "#ffffff"
+  style.stroke: "#2f2f35"
+  style.stroke-width: 3
+  style.bold: true
+  style.font-size: 26
+  t: "answer \"refused\" to all 49 items,\nread nothing, think about nothing" {
+    style.fill: "#ffffff"; style.font-color: "#2f2f35"; style.stroke: "#888888"
+    style.italic: true; width: 620
+  }
+}
+
+steps: {
+  1: {
+    nothing: "BOUGHT ESSENTIALLY NOTHING" {
+      grid-columns: 1
+      grid-gap: 10
+      style.fill: "#f4d7d7"
+      style.stroke: "#c14545"
+      style.stroke-width: 2
+      style.bold: true
+
+      pb: "phrase bank — 47%   (BELOW the baseline)" {
+        style.fill: "#ffffff"; style.stroke: "#c14545"; style.bold: true; width: 470
+      }
+      ab: "abliterated — 63%   (+1 item over doing nothing)" {
+        style.fill: "#ffffff"; style.stroke: "#c14545"; style.bold: true; width: 630
+      }
+    }
+    baseline -> nothing: { style.stroke: "#c14545"; style.stroke-width: 3 }
+  }
+
+  2: {
+    worked: "ACTUALLY WORKED" {
+      grid-columns: 1
+      grid-gap: 10
+      style.fill: "#d7ecd9"
+      style.stroke: "#3f7d47"
+      style.stroke-width: 2
+      style.bold: true
+
+      q7: "qwen 7B — 88%" {
+        style.fill: "#ffffff"; style.stroke: "#3f7d47"; style.bold: true; width: 880
+      }
+      q14: "qwen 14B — 94%" {
+        style.fill: "#ffffff"; style.stroke: "#3f7d47"; style.bold: true; width: 940
+      }
+    }
+    baseline -> worked: { style.stroke: "#3f7d47"; style.stroke-width: 3 }
+  }
+
+  3: {
+    lesson: "a judge's score means nothing\nuntil you know what doing nothing scores." {
+      shape: document
+      style.fill: "#fdf6e3"
+      style.stroke: "#b08968"
+      style.stroke-width: 3
+      style.bold: true
+      style.font-size: 28
+    }
+  }
+}

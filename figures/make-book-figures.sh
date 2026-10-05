@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Render the BOOK version of each stepped Part One figure: one vector PDF
+# Render the BOOK version of each stepped figure: one vector PDF
 # showing the finished diagram (the last board).
 #
 # The video wants the boards separately, so the picture assembles on camera.
@@ -21,6 +21,17 @@ STEPPED=(
   05-1-the-quiet-leak
   05-2-echoleak-chain
   06-1-request-and-response
+  07-1-seven-vs-nine
+  07-2-obfuscated-persona
+  07-3-crescendo-staircase
+  08-1-the-attack-loop
+  09-1-shield-vs-verifier
+  09-2-three-verifiers
+  09-3-the-shields-lever
+  10-1-where-the-attack-lives
+  11-1-the-prompts-lever
+  12-1-four-judges
+  13-1-three-zoom-levels
 )
 
 for name in "${STEPPED[@]}"; do

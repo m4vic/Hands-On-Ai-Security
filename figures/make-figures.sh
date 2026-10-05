@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Render the Part One figures for the Foundation video.
+# Render the Part One and Part Two figures for the video course.
 #
 # These are built as D2 "steps": each .d2 produces a numbered sequence of
 # boards (index.png, 1.png, 2.png, ...) that assemble the diagram one piece
@@ -28,6 +28,17 @@ DEFAULT_FIGURES=(
   05-1-the-quiet-leak.d2
   05-2-echoleak-chain.d2
   06-1-request-and-response.d2
+  07-1-seven-vs-nine.d2
+  07-2-obfuscated-persona.d2
+  07-3-crescendo-staircase.d2
+  08-1-the-attack-loop.d2
+  09-1-shield-vs-verifier.d2
+  09-2-three-verifiers.d2
+  09-3-the-shields-lever.d2
+  10-1-where-the-attack-lives.d2
+  11-1-the-prompts-lever.d2
+  12-1-four-judges.d2
+  13-1-three-zoom-levels.d2
 )
 
 FIGURES=("$@")

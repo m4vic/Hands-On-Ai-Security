@@ -1,0 +1,66 @@
+# Figure 9.3 - The shield has one lever and it is attached to both ends.
+# Every point of coverage is bought with a refused customer.
+#
+# Steps:
+#   index - the lever, with both ends named
+#   1     - what each end actually costs, measured
+#   2     - the conclusion
+
+direction: right
+
+ends: "" {
+  grid-columns: 2
+  horizontal-gap: 50
+  style.stroke-width: 0
+  style.fill: transparent
+
+  tight: "TIGHT PATTERNS" {
+    style.fill: "#e8eef7"
+    style.stroke: "#41618f"
+    style.stroke-width: 2
+    style.bold: true
+    style.font-size: 26
+  }
+
+  loose: "LOOSE PATTERNS" {
+    style.fill: "#f4d7d7"
+    style.stroke: "#c14545"
+    style.stroke-width: 2
+    style.bold: true
+    style.font-size: 26
+  }
+}
+
+ends.tight -> ends.loose: "one lever" {
+  style.stroke: "#2f2f35"
+  style.stroke-width: 4
+}
+
+steps: {
+  1: {
+    ends.tight.a: "49% of attacks stopped" {
+      style.fill: "#ffffff"; style.stroke: "#41618f"; style.bold: true; width: 300
+    }
+    ends.tight.b: "0% of customers refused" {
+      style.fill: "#d7ecd9"; style.stroke: "#3f7d47"; style.bold: true; width: 300
+    }
+    ends.loose.a: "63% of attacks stopped" {
+      style.fill: "#d7ecd9"; style.stroke: "#3f7d47"; style.bold: true; width: 300
+    }
+    ends.loose.b: "20% of customers refused" {
+      style.fill: "#f4d7d7"; style.stroke: "#c14545"; style.bold: true; width: 300
+    }
+  }
+
+  2: {
+    truth: "there is no setting where both numbers are good.\nmoving one always moves the other." {
+      shape: document
+      style.fill: "#2f2f35"
+      style.font-color: "#ffffff"
+      style.stroke: "#2f2f35"
+      style.stroke-width: 2
+      style.bold: true
+      style.font-size: 28
+    }
+  }
+}

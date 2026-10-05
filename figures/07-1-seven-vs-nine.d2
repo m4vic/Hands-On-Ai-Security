@@ -1,0 +1,99 @@
+# Figure 7.1 - Chapter 4's seven-class router against the real nine-category
+# corpus. The router is LOSSY: two labels split, one waits for Part Three,
+# and two techniques had no slot at all.
+#
+# Steps:
+#   index - both lists, plain
+#   1     - the four that map cleanly, one to one
+#   2     - the two that split, and the one that waits
+#   3     - the two with no slot at all
+#
+# Correspondence is shown by COLOUR, not by arrows. Eleven arrows across a
+# column gap is exactly where D2's routing fails: the first attempt printed
+# edge labels on top of the boxes and ran every line straight through the
+# middle of both lists.
+
+direction: right
+
+lists: "" {
+  grid-columns: 2
+  horizontal-gap: 90
+  style.stroke-width: 0
+  style.fill: transparent
+
+  seven: "CHAPTER 4's SEVEN\nthe router" {
+    grid-columns: 1
+    grid-gap: 7
+    style.fill: "#f7f7f8"
+    style.stroke: "#888888"
+
+    di: "direct_injection"   { style.fill: "#ffffff"; style.stroke: "#cccccc"; width: 300 }
+    rh: "role_hijack"        { style.fill: "#ffffff"; style.stroke: "#cccccc"; width: 300 }
+    ob: "obfuscation"        { style.fill: "#ffffff"; style.stroke: "#cccccc"; width: 300 }
+    se: "system_extraction"  { style.fill: "#ffffff"; style.stroke: "#cccccc"; width: 300 }
+    ii: "indirect_injection" { style.fill: "#ffffff"; style.stroke: "#cccccc"; width: 300 }
+    ta: "tool_abuse"         { style.fill: "#ffffff"; style.stroke: "#cccccc"; width: 300 }
+    bn: "benign"             { style.fill: "#ffffff"; style.stroke: "#cccccc"; width: 300 }
+  }
+
+  nine: "THE REAL NINE\nwhat's actually in the corpus" {
+    grid-columns: 1
+    grid-gap: 7
+    style.fill: "#f7f7f8"
+    style.stroke: "#888888"
+
+    di: "direct_injection"     { style.fill: "#ffffff"; style.stroke: "#cccccc"; width: 420 }
+    pr: "persona_replacement"  { style.fill: "#ffffff"; style.stroke: "#cccccc"; width: 420 }
+    jb: "jailbreak"            { style.fill: "#ffffff"; style.stroke: "#cccccc"; width: 420 }
+    eo: "encoding_obfuscation" { style.fill: "#ffffff"; style.stroke: "#cccccc"; width: 420 }
+    ts: "token_smuggling"      { style.fill: "#ffffff"; style.stroke: "#cccccc"; width: 420 }
+    se: "system_extraction"    { style.fill: "#ffffff"; style.stroke: "#cccccc"; width: 420 }
+    ii: "indirect_injection"   { style.fill: "#ffffff"; style.stroke: "#cccccc"; width: 420 }
+    cr: "crescendo"            { style.fill: "#ffffff"; style.stroke: "#cccccc"; width: 420 }
+    ms: "many_shot"            { style.fill: "#ffffff"; style.stroke: "#cccccc"; width: 420 }
+    bn: "benign"               { style.fill: "#ffffff"; style.stroke: "#cccccc"; width: 420 }
+  }
+}
+
+steps: {
+  1: {
+    lists.seven.di: { style.fill: "#d7ecd9"; style.stroke: "#3f7d47"; style.stroke-width: 3; style.bold: true }
+    lists.nine.di:  { style.fill: "#d7ecd9"; style.stroke: "#3f7d47"; style.stroke-width: 3; style.bold: true }
+    lists.seven.se: { style.fill: "#d7ecd9"; style.stroke: "#3f7d47"; style.stroke-width: 3; style.bold: true }
+    lists.nine.se:  { style.fill: "#d7ecd9"; style.stroke: "#3f7d47"; style.stroke-width: 3; style.bold: true }
+    lists.seven.ii: { style.fill: "#d7ecd9"; style.stroke: "#3f7d47"; style.stroke-width: 3; style.bold: true }
+    lists.nine.ii:  { style.fill: "#d7ecd9"; style.stroke: "#3f7d47"; style.stroke-width: 3; style.bold: true }
+    lists.seven.bn: { style.fill: "#d7ecd9"; style.stroke: "#3f7d47"; style.stroke-width: 3; style.bold: true }
+    lists.nine.bn:  { style.fill: "#d7ecd9"; style.stroke: "#3f7d47"; style.stroke-width: 3; style.bold: true }
+
+    green: "GREEN — four map cleanly, one to one" {
+      style.fill: "#d7ecd9"; style.stroke: "#3f7d47"; style.stroke-width: 2
+      style.bold: true; style.font-size: 24
+    }
+  }
+
+  2: {
+    lists.seven.rh: { style.fill: "#fdf6e3"; style.stroke: "#b08968"; style.stroke-width: 3; style.bold: true }
+    lists.nine.pr:  { style.fill: "#fdf6e3"; style.stroke: "#b08968"; style.stroke-width: 3; style.bold: true }
+    lists.nine.jb:  { style.fill: "#fdf6e3"; style.stroke: "#b08968"; style.stroke-width: 3; style.bold: true }
+    lists.seven.ob: { style.fill: "#fdf6e3"; style.stroke: "#b08968"; style.stroke-width: 3; style.bold: true }
+    lists.nine.eo:  { style.fill: "#fdf6e3"; style.stroke: "#b08968"; style.stroke-width: 3; style.bold: true }
+    lists.nine.ts:  { style.fill: "#fdf6e3"; style.stroke: "#b08968"; style.stroke-width: 3; style.bold: true }
+    lists.seven.ta: { style.fill: "#eeeeee"; style.stroke: "#999999"; style.italic: true }
+
+    amber: "AMBER — two labels split into families\nrole_hijack → persona_replacement + jailbreak\nobfuscation → encoding_obfuscation + token_smuggling\n\nGREY — tool_abuse waits for Part Three (no tools yet)" {
+      style.fill: "#fdf6e3"; style.stroke: "#b08968"; style.stroke-width: 2
+      style.bold: true; style.font-size: 24
+    }
+  }
+
+  3: {
+    lists.nine.cr: { style.fill: "#f4d7d7"; style.stroke: "#c14545"; style.stroke-width: 4; style.bold: true }
+    lists.nine.ms: { style.fill: "#f4d7d7"; style.stroke: "#c14545"; style.stroke-width: 4; style.bold: true }
+
+    red: "RED — TWO HAD NO SLOT AT ALL\ncrescendo and many_shot are multi-turn,\nand the router only ever sees one message" {
+      style.fill: "#f4d7d7"; style.stroke: "#c14545"; style.stroke-width: 3
+      style.bold: true; style.font-size: 26
+    }
+  }
+}
